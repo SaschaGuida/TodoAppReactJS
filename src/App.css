@@ -17,13 +17,6 @@ body {
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar-item {
-  display: block;
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: black;
-}
-
 .main-content {
   flex: 1;
   padding: 20px;
@@ -60,15 +53,15 @@ body {
   left: 0;
   width: 5px;
   border-radius: 10px 0 0 10px;
-  background-color: #D8BFD8; /* Colore pastello viola come default */
+  background-color: #D8BFD8;
 }
 
 .todo-item:nth-child(odd)::before {
-  background-color: #D8BFD8; /* Colore pastello viola */
+  background-color: #D8BFD8;
 }
 
 .todo-item:nth-child(even)::before {
-  background-color: #98FB98; /* Colore pastello verde */
+  background-color: #98FB98;
 }
 
 
