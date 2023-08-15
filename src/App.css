@@ -1,25 +1,49 @@
 /* Stile generale */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #0F172A;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .container {
   display: flex;
+  height: 100vh;
 }
 
-.sidebar {
-  width: 15%;
+/* Sidebar Styles */
+.sidebar, .calendar {
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  top: 0;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #141E33;
+  z-index: 1;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
+.sidebar {
+  left: 0;
+  width: 15%;
+}
+
+.calendar {
+  right: 0;
+  width: 15%;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Styles */
 .main-content {
   flex: 1;
   padding: 20px;
+  padding-left: 20%; 
+  padding-right: 20%; 
+  overflow-y: auto;
+  height: 100vh;
 }
 
 .todo-input {
@@ -29,12 +53,27 @@ body {
   margin-bottom: 20px;
 }
 
+.todo-input input {
+  flex: 1; /* Fa in modo che l'input cresca e occupi lo spazio disponibile */
+  padding: 8px 12px; /* Dà un po' di padding intorno al testo */
+  border-radius: 20px; /* Bordi arrotondati */
+  background-color: #EBB305; /* Colore di sfondo giallo */
+  border: none; /* Rimuove il bordo standard */
+  margin-right: 10px; /* Dà un po' di spazio tra l'input e qualsiasi elemento successivo, come un pulsante */
+  outline: none; /* Rimuove l'outline quando l'input è selezionato/focus */
+}
+
+.todo-input input::placeholder {
+  color: rgba(0, 0, 0, 0.6); /* Colora il testo del placeholder, se necessario */
+}
+
+
 .todo-item {
   display: flex;
   align-items: center;
   padding: 15px;
   border-radius: 10px;
-  background-color: white;
+  background-color: #EBB305;
   margin-bottom: 20px;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -64,39 +103,16 @@ body {
   background-color: #98FB98;
 }
 
-
-.calendar {
-  width: 15%;
-  padding: 20px;
-  background-color: #f4f4f4;
-  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-      flex-direction: column;
-  }
-
-  .sidebar,
-  .main-content,
-  .calendar {
-      margin-bottom: 20px;
-      width: 100%;
-  }
-}
-
 .sidebar-item {
   display: block;
   padding: 10px;
   text-decoration: none;
-  color: black;
+  color: #94A3B8;
   transition: background 0.3s;
 }
 
 .sidebar-item:hover {
-  background: #f5f5f5;
+  color: #ffffff;
 }
 
 .todo-item button {
@@ -104,7 +120,7 @@ body {
 }
 
 .todo-input button {
-  background-color: #4CAF50;
+  background-color: #EBB305;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -114,4 +130,64 @@ body {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar,
+  .main-content,
+  .calendar {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+/* modal */
+
+.todo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-modal-content {
+  background: #0F172A;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.todo-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-modal-body {
+  margin-top: 20px;
+}
+
+.flags {
+  margin: 20px 0;
+}
+
+button {
+  margin: 5px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
 }
